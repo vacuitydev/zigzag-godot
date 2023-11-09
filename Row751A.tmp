@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://8r8xv45grw5t"]
+
+[ext_resource type="Script" path="res://RowsContainer.gd" id="1_1a7fs"]
+[ext_resource type="PackedScene" uid="uid://bjluq3mycv66h" path="res://Row.tscn" id="2_40yr2"]
+[ext_resource type="PackedScene" uid="uid://crhisfb4do655" path="res://ResultLetter.tscn" id="2_dcvco"]
+
+[node name="RowsContainer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_1a7fs")
+ResultLetterScene = ExtResource("2_dcvco")
+RowScene = ExtResource("2_40yr2")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" parent="Panel/VBoxContainer" instance=ExtResource("2_40yr2")]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3

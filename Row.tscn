@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bjluq3mycv66h"]
+
+[node name="HBoxContainer" type="HBoxContainer"]
+size_flags_vertical = 3
+theme_override_constants/separation = 15

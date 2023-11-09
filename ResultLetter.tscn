@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://crhisfb4do655"]
+
+[ext_resource type="Script" path="res://ResultLetter.gd" id="1_p857n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ml1oo"]
+bg_color = Color(0.337255, 0.337255, 0.337255, 0.215686)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l2j58"]
+bg_color = Color(0.188235, 0.188235, 0.188235, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_tjioi"]
+font_size = 80
+
+[node name="ResultLetter" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_p857n")
+emptyColor = Color(0.345098, 0.756863, 0.756863, 1)
+emptyStyle = SubResource("StyleBoxFlat_ml1oo")
+
+[node name="Panel" type="Panel" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_l2j58")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "A"
+label_settings = SubResource("LabelSettings_tjioi")
+horizontal_alignment = 1
+vertical_alignment = 1
