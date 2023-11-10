@@ -1,7 +1,7 @@
 extends Control
 
-@export var result_rows:=10
-@export var result_word:="123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 "
+@export var result_rows:=4
+@export var result_word:="Thieves"
 
 @export var ResultLetterScene: PackedScene
 @export var RowScene:PackedScene
@@ -19,10 +19,10 @@ func calculateRowValues(_word, _rows):
 	var stateMachine = StateMachine.new(_word, _rows)
 	stateMachine.solve()
 	rowValues = stateMachine.rowValues
-	maxColumns = stateMachine.column
+	self.maxColumns = stateMachine.column
 func _ready():
 	calculateRowValues(self.result_word, self.result_rows)
-	columns = maxColumns
+	self.columns = maxColumns
 	print("Columns", columns)
 	for child in VerticalContainer.get_children():
 		child.queue_free()
@@ -30,27 +30,24 @@ func _ready():
 
 	for i in range(self.result_rows):
 		var new_row = RowScene.instantiate()
-		for J in range(columns+1):
+		for J in range(self.columns):
+			print("Instantiating column ", J, " in row ",i)
 			var emptyLetter = ResultLetterScene.instantiate()
 			emptyLetter.character = ""
 			new_row.add_child(emptyLetter)
 		VerticalContainer.add_child(new_row)
 		self.rows.push_back(new_row)
 
-	for i in (self.columns+1):
+	for i in (self.columns):
 		for j in range(len(self.rows)):
 			var rowValue = self.rowValues[j][i]
 			print("Row ", i, self.rowValues[j])
 			if(rowValue.state == ResultCharacter.RESULT_CHARACTER_STATE.EMPTY):
 				pass
-			else:		
-				var resultLetter = ResultLetterScene.instantiate()
-				resultLetter.character = rowValue.character
-				var previous_empty = self.rows[j].get_children()[i] 
-				previous_empty.queue_free()
-				await previous_empty.tree_exited
-				self.rows[j].add_child(resultLetter)
-				self.rows[j].move_child(resultLetter, i)
+			else:
+				var previous_empty = self.rows[j].get_children()[i]
+				previous_empty.character = rowValue.character
+				previous_empty.changeCharacter() 
 				
 				
 			# Wait 30 frames

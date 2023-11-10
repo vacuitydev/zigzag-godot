@@ -40,6 +40,7 @@ func solve():
 						ResultCharacter.new(
 							ResultCharacter.RESULT_CHARACTER_STATE.EMPTY
 						))
+	self.column = first_length
 func progressCurrent():
 	if self.rows==1:
 		self.current =0
